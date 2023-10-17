@@ -35,6 +35,9 @@ int handle_format(char specifier, va_list args, char *buffer, int *count)
 	case 'S':
 		chars_written = handle_str_custom(va_arg(args, const char *), buffer, count);
 		break;
+	case 'p':
+		chars_written += handle_pointer(args, buffer, count);
+		break;
 
 	case '%':
 		buffer[*count] = '%';

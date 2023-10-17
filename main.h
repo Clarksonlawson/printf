@@ -7,6 +7,8 @@ int _printf(const char *format, ...);
 int _putchar(char c);
 
 /* Handle format specifiers */
+int handle_pointer(va_list args, char buffer[], int *count);
+
 int handle_char(va_list args, char buffer[], int *count);
 int handle_string(va_list args, char buffer[], int *count);
 int handle_decimal(va_list args, char buffer[], int *count);
