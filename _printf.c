@@ -1,5 +1,6 @@
 #include "main.h"
 #include <stdarg.h>
+#include <stddef.h>
 
 /**
  * _printf - Custom printf function
@@ -7,6 +8,7 @@
  *
  * Return: Number of characters printed (excluding null byte)
  */
+
 int _printf(const char *format, ...)
 {
 	va_list args;
