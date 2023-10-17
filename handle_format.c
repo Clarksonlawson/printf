@@ -1,8 +1,7 @@
 #include "main.h"
-#include <stdarg.h>
 
 /**
- * handle_format - Helper function to handle format specifiers
+ * handle_format - Handles the conversion specifiers for _printf
  * @specifier: Format specifier
  * @args: Variable argument list
  *
@@ -15,35 +14,37 @@ int handle_format(char specifier, va_list args)
 	switch (specifier)
 	{
 	case 'c':
-		_putchar(va_arg(args, int));
-		count++;
+		count += handle_char(args);
 		break;
-
 	case 's':
-		count += print_str(va_arg(args, const char *));
+		count += handle_string(args);
 		break;
-
 	case 'd':
 	case 'i':
-		count += print_number(va_arg(args, int));
+		count += handle_decimal(args);
 		break;
-
+	case 'u':
+		count += handle_unsigned_num(args);
+		break;
+	case 'o':
+		count += handle_octal(args);
+		break;
+	case 'x':
+		count += handle_hex_lower(args);
+		break;
+	case 'X':
+		count += handle_hex_upper(args);
+		break;
 	case 'b':
-		count += print_binary(va_arg(args, unsigned int));
+		count += handle_binary(args);
 		break;
-
 	case '%':
-		_putchar('%');
-		count++;
+		count += handle_percent();
 		break;
-
 	default:
-		_putchar('%');
-		_putchar(specifier);
-		count += 2;
+		count += handle_format_default(specifier);
 		break;
 	}
 
 	return (count);
 }
-
