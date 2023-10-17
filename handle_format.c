@@ -41,6 +41,9 @@ int handle_format(char specifier, va_list args, char *buffer, int *count)
 	case 'r':
 		chars_written += handle_reverse(args, buffer, count);
 		break;
+	case 'R':
+		chars_written += print_rot13(va_arg(args, const char *), buffer, count);
+		break;
 
 	case '%':
 		buffer[*count] = '%';

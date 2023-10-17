@@ -28,6 +28,8 @@ int handle_format_default(char specifier, char buffer[], int *count);
 int handle_format(char specifier, va_list args, char buffer[], int *count);
 int print_octal(unsigned int num, char buffer[], int *count);
 int print_octal_r(unsigned int num, char buffer[], int *count, int digits);
+int print_rot13(const char *str, char buffer[], int *count);
+
 /* Helper functions for printing different types */
 int print_number(int num, char buffer[], int *count);
 int get_num_digits(unsigned int num);
