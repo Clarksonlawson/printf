@@ -5,15 +5,15 @@
  * @args: Variable argument list
  * @buffer: Local buffer to store characters
  * @count: Pointer to the count of characters printed
- *
  * Return: Number of characters printed
  */
 int handle_binary(va_list args, char buffer[], int *count)
 {
 	unsigned int num = va_arg(args, unsigned int);
+	int chars_printed = 0;
 
 	handle_binary_recursive(num, buffer, count);
-	return (*count);
+	return (chars_printed);
 }
 
 /**

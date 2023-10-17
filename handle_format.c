@@ -38,6 +38,9 @@ int handle_format(char specifier, va_list args, char *buffer, int *count)
 	case 'p':
 		chars_written += handle_pointer(args, buffer, count);
 		break;
+	case 'r':
+		chars_written += handle_reverse(args, buffer, count);
+		break;
 
 	case '%':
 		buffer[*count] = '%';

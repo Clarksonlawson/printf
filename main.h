@@ -19,6 +19,7 @@ int handle_octal(va_list args, char buffer[], int *count);
 int handle_hex_lower(va_list args, char buffer[], int *count);
 int handle_hex_upper(va_list args, char buffer[], int *count);
 int handle_binary(va_list args, char buffer[], int *count);
+int handle_reverse(va_list args, char buffer[], int *count);
 
 int handle_str_custom(const char *str, char buffer[], int *count);
 
