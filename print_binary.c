@@ -1,35 +1,30 @@
 #include "main.h"
 
 /**
- * print_binary - Helper function to print a binary number
- * @n: Decimal number to convert to binary
+ * print_binary - Prints the binary representation of an unsigned integer
+ * @num: Unsigned integer to print in binary
+ * @buffer: Buffer to store the result
+ * @count: Pointer to the count of characters printed
  *
  * Return: Number of characters printed
  */
-int print_binary(unsigned int n)
+int print_binary(unsigned int num, char buffer[], int *count)
 {
-	if (n == 0)
-		return (0);
+	int binary[32];
+	int i = 0;
 
-	return (print_binary_recursive(n));
+	/* Convert the decimal number to binary */
+	do {
+		binary[i++] = num % 2;
+		num /= 2;
+	} while (num > 0);
+
+	/* Print the binary representation to the buffer in reverse order */
+	while (--i >= 0)
+	{
+		buffer[*count] = binary[i] + '0';
+		*count += 1;
+	}
+
+	return (get_num_digits(num));
 }
-
-/**
- * print_binary_recursive - Recursive helper function to print binary
- * @n: Decimal number to convert to binary
- *
- * Return: Number of characters printed
- */
-int print_binary_recursive(unsigned int n)
-{
-	int count = 0;
-
-	if (n / 2 != 0)
-		count += print_binary_recursive(n / 2);
-
-	_putchar(n % 2 + '0');
-	count++;
-
-	return (count);
-}
-

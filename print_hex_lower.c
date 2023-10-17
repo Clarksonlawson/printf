@@ -1,31 +1,15 @@
 #include "main.h"
 
 /**
- * print_hex_lower - Helper function to print a number in lowercase hexadecimal
- * @num: Number to print
+ * print_hex_lower - signed integer
+ * @num: Unsigned integer to print in lowercase hexadecimal
+ * @buffer: Buffer to store the result
+ * @count: Pointer to the count of characters printed
  *
  * Return: Number of characters printed
  */
-int print_hex_lower(unsigned int num)
+int print_hex_lower(unsigned int num, char buffer[], int *count)
 {
-	int count = 0;
-
-	if (num / 16 != 0)
-		count += print_hex_lower(num / 16);
-
-	count += _putchar(hex_digit(num % 16));
-
-	return (count);
-}
-
-/**
- * hex_digit - Helper function to get the lowercase hexadecimal digit
- * @num: Number (0 to 15)
- *
- * Return: Corresponding hexadecimal digit character
- */
-char hex_digit(int num)
-{
-	return (num < 10) ? (char)('0' + num) : (char)('a' + num - 10);
+	return (print_hex(num, buffer, count, 0));
 }
 

@@ -1,29 +1,36 @@
 #include "main.h"
 
 /**
- * print_hex - Helper function to print a hexadecimal number
- * @num: Hexadecimal number to print
- * @uppercase: Flag to indicate whether to print in uppercase
+ * print_hex - Prints the hexadecimal representation of an unsigned integer
+ * @num: Unsigned integer to print in hexadecimal
+ * @buffer: Buffer to store the result
+ * @count: Pointer to the count of characters printed
+ * @uppercase: Flag to indicate whether to use uppercase letters (1) or not (0)
  *
  * Return: Number of characters printed
  */
-int print_hex(unsigned int num, int uppercase)
+int print_hex(unsigned int num, char buffer[], int *count, int uppercase)
 {
-	int count = 0;
-
-	/* Hexadecimal digits */
-	char hex_digits[] = "0123456789abcdef";
+	int hex[32];
+	int i = 0;
+	const char *hex_digits = "0123456789ABCDEF";
 
 	if (uppercase)
-		hex_digits[10] = 'A'; /* Change 'a' to 'A' for uppercase */
+		hex_digits = "0123456789ABCDEF";
 
-	/* Print digits */
-	if (num / 16 != 0)
-		count += print_hex(num / 16, uppercase);
+	/* Convert the decimal number to hexadecimal */
+	do {
+		hex[i++] = num % 16;
+		num /= 16;
+	} while (num > 0);
 
-	_putchar(hex_digits[num % 16]);
-	count++;
+	/* Print the hexadecimal representation to the buffer in reverse order */
+	while (--i >= 0)
+	{
+		buffer[*count] = hex_digits[hex[i]];
+		*count += 1;
+	}
 
-	return (count);
+	return (get_num_digits(num));
 }
 

@@ -1,25 +1,28 @@
 #include "main.h"
 #include <stddef.h>
+
 /**
- * print_str - Helper function to print a string
- * @str: String to print
+ * print_str - Prints a string to a buffer
+ * @str: The string to print
+ * @buffer: The buffer to store the printed characters
+ * @count: Pointer to the count of characters printed
  *
- * Return: Number of characters printed
+ * Return: The number of characters printed (excluding null byte)
  */
-int print_str(const char *str)
+int print_str(const char *str, char buffer[], int *count)
 {
-	int count = 0;
+	int length = 0;
 
 	if (str == NULL)
 		str = "(null)";
 
-	while (*str != '\0')
+	while (str[length] != '\0')
 	{
-		_putchar(*str);
-		count++;
-		str++;
+		buffer[*count] = str[length];
+		length++;
+		(*count)++;
 	}
 
-	return (count);
+	return (length);
 }
 

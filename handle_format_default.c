@@ -1,13 +1,16 @@
 #include "main.h"
 
 /**
- * handle_format_default - Handles the default case for an unknown specifier
+ * handle_format_default - Handles default case for unknown specifier
  * @specifier: Unknown specifier
- *
+ * @buffer: The buffer
+ * @count: the count
  * Return: Number of characters printed
  */
-int handle_format_default(char specifier)
+int handle_format_default(char specifier, char buffer[], int *count)
 {
-	return (_putchar('%') + _putchar(specifier));
+	buffer[(*count)++] = '%';
+	buffer[(*count)++] = specifier;
+	return (*count);
 }
 

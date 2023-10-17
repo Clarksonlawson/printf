@@ -1,50 +1,48 @@
 #include "main.h"
+#include <stdarg.h>
 
 /**
- * handle_format - Handles the conversion specifiers for _printf
+ * handle_format - Helper function to handle format specifiers
  * @specifier: Format specifier
  * @args: Variable argument list
+ * @buffer: Local buffer for storing characters
+ * @count: Pointer to the count of characters printed
  *
- * Return: Number of characters printed
+ * Return: Number of characters written to the buffer
  */
-int handle_format(char specifier, va_list args)
+int handle_format(char specifier, va_list args, char *buffer, int *count)
 {
-	int count = 0;
+	int chars_written = 0;
 
 	switch (specifier)
 	{
 	case 'c':
-		count += handle_char(args);
+		chars_written = handle_char(args, buffer, count);
 		break;
+
 	case 's':
-		count += handle_string(args);
+		chars_written = handle_string(args, buffer, count);
 		break;
+
 	case 'd':
 	case 'i':
-		count += handle_decimal(args);
+		chars_written = handle_decimal(args, buffer, count);
 		break;
-	case 'u':
-		count += handle_unsigned_num(args);
-		break;
-	case 'o':
-		count += handle_octal(args);
-		break;
-	case 'x':
-		count += handle_hex_lower(args);
-		break;
-	case 'X':
-		count += handle_hex_upper(args);
-		break;
+
 	case 'b':
-		count += handle_binary(args);
+		chars_written = handle_binary(args, buffer, count);
 		break;
+
 	case '%':
-		count += handle_percent();
+		buffer[*count] = '%';
+		(*count)++;
+		chars_written = 1;
 		break;
+
 	default:
-		count += handle_format_default(specifier);
+		chars_written = handle_format_default(specifier, buffer, count);
 		break;
 	}
 
-	return (count);
+	return (chars_written);
 }

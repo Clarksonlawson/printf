@@ -1,21 +1,21 @@
 #include "main.h"
 
 /**
- * print_unsigned_num - Helper function to print an unsigned number
- * @num: Number to print
+ * print_unsigned_num - Prints an unsigned number
+ * @num: Unsigned number to print
+ * @buffer: Buffer to store the result
+ * @count: Pointer to the count of characters printed
  *
  * Return: Number of characters printed
  */
-int print_unsigned_num(unsigned int num)
+int print_unsigned_num(unsigned int num, char buffer[], int *count)
 {
-	int count = 0;
-
 	if (num / 10 != 0)
-		count += print_unsigned_num(num / 10);
+		print_unsigned_num(num / 10, buffer, count);
 
-	_putchar(num % 10 + '0');
-	count++;
+	buffer[*count] = num % 10 + '0';
+	(*count)++;
 
-	return (count);
+	return (1);
 }
 

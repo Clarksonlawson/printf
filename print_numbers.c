@@ -1,30 +1,16 @@
 #include "main.h"
 
 /**
- * print_number - Helper function to print a number
- * @num: Number to print
+ * print_numbers - Prints an unsigned integer to a buffer
+ * @num: The unsigned integer to print
+ * @buffer: The buffer to store the printed characters
+ * @count: Pointer to the count of characters printed
  *
- * Return: Number of characters printed
+ * Return: Always returns 1 (for now)
  */
-int print_number(int num)
+int print_numbers(unsigned int num, char buffer[], int *count)
 {
-	int count = 0;
-
-	/* Handle negative numbers */
-	if (num < 0)
-	{
-		_putchar('-');
-		count++;
-		num = -num;
-	}
-
-	/* Print digits */
-	if (num / 10 != 0)
-		count += print_number(num / 10);
-
-	_putchar(num % 10 + '0');
-	count++;
-
-	return (count);
+	print_number_recursive(num, buffer, count);
+	return (1);
 }
 

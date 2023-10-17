@@ -1,25 +1,15 @@
 #include "main.h"
 
 /**
- * print_hex_upper - Helper function to print an uppercase hexadecimal number
- * @num: Number to print
+ * print_hex_upper - Prints of an unsigned integer
+ * @num: Unsigned integer to print in uppercase hexadecimal
+ * @buffer: Buffer to store the result
+ * @count: Pointer to the count of characters printed
  *
  * Return: Number of characters printed
  */
-int print_hex_upper(unsigned int num)
+int print_hex_upper(unsigned int num, char buffer[], int *count)
 {
-	int count = 0;
-
-	if (num / 16 != 0)
-		count += print_hex_upper(num / 16);
-
-	if (num % 16 < 10)
-		_putchar(num % 16 + '0');
-	else
-		_putchar(num % 16 - 10 + 'A');
-
-	count++;
-
-	return (count);
+	return (print_hex(num, buffer, count, 1));
 }
 
