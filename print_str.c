@@ -16,11 +16,12 @@ int print_str(const char *str, char buffer[], int *count)
 	if (str == NULL)
 		str = "(null)";
 
-	while (str[length] != '\0')
+	while (*str != '\0')
 	{
-		buffer[*count] = str[length];
+		buffer[*count] = *str;
 		length++;
 		(*count)++;
+		str++;
 	}
 
 	return (length);
