@@ -5,7 +5,7 @@
  * _printf - Custom printf function
  * @format: Format string
  *
- * Return: Number of characters printed (excluding null byte)
+ * Return: Returns the Number of characters printed (excluding null byte)
  */
 int _printf(const char *format, ...)
 {
@@ -20,7 +20,7 @@ int _printf(const char *format, ...)
 		if (*ptr == '%' && *(ptr + 1) != '\0')
 		{
 			count += handle_format(*(ptr + 1), args);
-			ptr++; /* Skip the next character after '%' */
+			ptr++; /* Skip to the next character after '%' */
 		}
 		else
 		{

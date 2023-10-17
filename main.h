@@ -3,7 +3,7 @@
 
 #include <stdarg.h>
 
-/* Function declarations */
+/* Function declarations for the program */ 
 int  _putchar(char c);
 int _printf(const char *format, ...);
 int print_str(const char *str);
